@@ -1,14 +1,49 @@
 pipeline {
     agent any
-    
-    parameters {
-        string(name: 'WorldReplacer', defaultValue: 'World', description: 'Who should I say hello to?')
-    }
 
     stages {
-        stage('Hello') {
+        stage('build-install-deps') {
             steps {
-                echo "Hello ${params.WorldReplacer}!"
+                echo "Installing all necessary node dependencies.."
+            }
+        }
+
+        stage('deploy-dev') {
+            steps {
+                echo "Deployment to DEV environment has started.."
+                echo "Deployment to DEV environment has finished"
+            }
+        }
+        stage('test-dev') {
+            steps {
+                echo "Testing Sample Book Application service has started on DEV environment.."
+                echo "Testing Sample Book Application service finished"
+            }
+        }
+
+        stage('deploy-stg') {
+            steps {
+                echo "Deployment to STG environment has started.."
+                echo "Deployment to STG environment has finished"
+            }
+        }
+        stage('test-stg') {
+            steps {
+                echo "Testing Sample Book Application service has started on STG environment.."
+                echo "Testing Sample Book Application service finished"
+            }
+        }
+
+        stage('deploy-prd') {
+            steps {
+                echo "Deployment to PRD environment has started.."
+                echo "Deployment to PRD environment has finished"
+            }
+        }
+        stage('test-prd') {
+            steps {
+                echo "Testing Sample Book Application service has started on PRD environment.."
+                echo "Testing Sample Book Application service finished"
             }
         }
     }
