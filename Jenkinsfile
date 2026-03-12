@@ -70,7 +70,7 @@ def deploy(String environment, int port)
     echo "Deployment to ${environment} environment has started.."
     git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/sample-book-app-2026.git'
     bat "npm install"
-    bat "node_modules/.bin/pm2 delete \"books-${environment}\" || exit 0"
+    bat "node_modules\.bin\pm2 delete \"books-${environment}\" || exit 0"
     bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
