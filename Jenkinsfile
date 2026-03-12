@@ -15,7 +15,7 @@ pipeline {
         stage('deploy-dev') {
             steps {
                 script {
-                    deploy("DEV")
+                    deploy("DEV", 1010)
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('deploy-stg') {
             steps {
                 script {
-                    deploy("STG")
+                    deploy("STG", 1010)
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
         stage('deploy-prd') {
             steps {
                 script {
-                    deploy("PRD")
+                    deploy("PRD", 1010)
                 }
             }
         }
@@ -65,9 +65,10 @@ def build() {
     echo "Done installing"
 }
 
-def deploy(String environment)
+def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
+    bat "pm2 start -n start -n \"books-${environment}\" index.js -- -- ${port}";
     echo "Deployment to ${environment} environment has finished"
 }
 
