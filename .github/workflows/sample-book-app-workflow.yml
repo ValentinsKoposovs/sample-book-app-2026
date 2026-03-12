@@ -19,41 +19,43 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Installing all necessary node dependencies.."
+          - name: List all files
+            run: dir
     deploy-dev:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Deployment to DEV environment has started.."
     test-dev:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Testing Sample Book Application service has started on DEV environment.."
     deploy-stg:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Deployment to STG environment has started.."
     test-stg:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Testing Sample Book Application service has started on STG environment.."
     deploy-prd:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Deployment to PRD environment has started.."
     test-prd:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v6
-          - name: install dependencies
+          - name: print step name
             run: echo "Testing Sample Book Application service has started on PRD environment.."
