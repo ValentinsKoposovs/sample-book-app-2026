@@ -1,0 +1,59 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Sample Workflow
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+        
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+    build-install-deps:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Installing all necessary node dependencies.."
+    deploy-dev:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Deployment to DEV environment has started.."
+    test-dev:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Testing Sample Book Application service has started on DEV environment.."
+    deploy-stg:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Deployment to STG environment has started.."
+    test-stg:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Testing Sample Book Application service has started on STG environment.."
+    deploy-prd:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Deployment to PRD environment has started.."
+    test-prd:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: install dependencies
+            run: echo "Testing Sample Book Application service has started on PRD environment.."

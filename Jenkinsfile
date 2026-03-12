@@ -62,7 +62,6 @@ pipeline {
 def build() {
     echo "Installing all necessary node dependencies.."
     bat "npm install"
-    // bat "node_modules\\.bin\\pm2 startup"
     echo "Done installing"
 }
 
