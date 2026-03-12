@@ -68,7 +68,9 @@ def build() {
 def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
-    bat "node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}";
+    // bat ".\\node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}";
+    bat ".\\node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0"
+    pwsh ".\\node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
 
