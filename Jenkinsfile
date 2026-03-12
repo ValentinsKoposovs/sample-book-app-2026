@@ -62,6 +62,7 @@ pipeline {
 def build() {
     echo "Installing all necessary node dependencies.."
     bat "npm install"
+    // bat "node_modules\\.bin\\pm2 startup"
     echo "Done installing"
 }
 
@@ -69,8 +70,7 @@ def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
     // bat ".\\node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
-    // bat ".\\node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0"
-    bat "node_modules\\.bin\\pm2 startup"
+    // bat ".\\node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0
     bat "node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
