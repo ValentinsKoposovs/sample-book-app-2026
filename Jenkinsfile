@@ -71,12 +71,13 @@ def deploy(String environment, int port)
     echo "Deployment to ${environment} environment has started.."
     // bat ".\\node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
     // bat ".\\node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0
-    bat "node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
+    bat "pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
 
 def test(String environment)
 {
     echo "Testing Sample Book Application service has started on ${environment} environment.."
+    git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/RTU-sample-API-automation-2026.git'
     echo "Testing Sample Book Application service finished"
 }
