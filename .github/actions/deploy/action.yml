@@ -12,10 +12,10 @@ runs:
   steps:
     - uses: actions/checkout@v6
     - run: echo "Deployment to ${{inputs.environment}} environment has started.."
-      shell: pwsh
+      shell: powershell
     - name: Install all dependencies
       run: npm install
-      shell: pwsh
+      shell: powershell
     - name: Cleanup of old service
       shell: cmd
       run: node_modules\\.bin\\pm2 delete books-${{inputs.environment}} || exit 0
@@ -23,4 +23,4 @@ runs:
       shell: cmd
       run: node_modules/.bin/pm2 start -n books-${{inputs.environment}} index.js -- ${{inputs.port}}
     - run: echo "Deployment to ${{inputs.environment}} environment has finished"
-      shell: pwsh
+      shell: powershell
