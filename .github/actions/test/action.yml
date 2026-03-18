@@ -11,12 +11,15 @@ runs:
       with:
         repository: 'ValentinsKoposovs/RTU-sample-API-automation-2026'
         clean: 'false'
+        path: 'e2e-api-tests'
     - run: echo "Testing Sample Book Application service has started on ${{inputs.environment}} environment.."
       shell: powershell
     - name: Install all dependencies
+      working-directory: ./e2e-api-tests
       run: npm install
       shell: powershell
     - name: Running API tests
+      working-directory: ./e2e-api-tests
       shell: cmd
       run: npm run books BOOKS_${{inputs.environment}}
     - run: echo "Testing Sample Book Application service finished"
