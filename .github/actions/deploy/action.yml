@@ -1,0 +1,26 @@
+name: 'Deploy Application/service'
+description: 'Deploy Sample Book App service via pm2 with variables'
+inputs:
+  environment:
+    description: 'environment where to deploy sample book app'
+    required: true
+  port:
+    description: 'environment port number'
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+    - run: echo "Deployment to ${{inputs.environment}} environment has started.."
+      shell: pwsh
+    - name: Install all dependencies
+      run: npm install
+      shell: pwsh
+    - name: Cleanup of old service
+      shell: cmd
+      run: node_modules\\.bin\\pm2 delete books-${{inputs.environment}} || exit 0
+    - name: Running service
+      shell: cmd
+      run: node_modules/.bin/pm2 start -n books-${{inputs.environment}} index.js -- ${{inputs.port}}
+    - run: echo "Deployment to ${{inputs.environment}} environment has finished"
+      shell: pwsh
