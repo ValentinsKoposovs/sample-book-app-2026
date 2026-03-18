@@ -1,0 +1,22 @@
+name: 'Test Application/service API tests'
+description: 'Test Sample Book App service API tests'
+inputs:
+  environment:
+    description: 'environment where to run sample book app API tests'
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+      with:
+        repository: 'ValentinsKoposovs/RTU-sample-API-automation-2026'
+    - run: echo "Testing Sample Book Application service has started on ${{inputs.environment}} environment.."
+      shell: powershell
+    - name: Install all dependencies
+      run: npm install
+      shell: powershell
+    - name: Running API tests
+      shell: cmd
+      run: npm run books BOOKS_${{inputs.environment}}
+    - run: echo "Testing Sample Book Application service finished"
+      shell: powershell

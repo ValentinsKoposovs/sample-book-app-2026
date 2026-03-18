@@ -35,9 +35,9 @@ jobs:
         runs-on: self-hosted
         needs: deploy-dev
         steps:
-          - uses: actions/checkout@v6
-          - name: print step name
-            run: echo "Testing Sample Book Application service has started on DEV environment.."
+          - uses: ./.github/actions/test
+            with:
+              environment: 'DEV'
     deploy-stg:
         runs-on: self-hosted
         needs: test-dev
@@ -50,9 +50,9 @@ jobs:
         runs-on: self-hosted
         needs: deploy-stg
         steps:
-          - uses: actions/checkout@v6
-          - name: print step name
-            run: echo "Testing Sample Book Application service has started on STG environment.."
+          - uses: ./.github/actions/test
+            with:
+              environment: 'STG'
     deploy-prd:
         runs-on: self-hosted
         needs: test-stg
@@ -65,6 +65,6 @@ jobs:
         runs-on: self-hosted
         needs: deploy-prd
         steps:
-          - uses: actions/checkout@v6
-          - name: print step name
-            run: echo "Testing Sample Book Application service has started on PRD environment.."
+          - uses: ./.github/actions/test
+            with:
+              environment: 'PRD'
