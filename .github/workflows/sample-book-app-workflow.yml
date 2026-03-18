@@ -33,11 +33,11 @@ jobs:
             run: npm install
           - name: Cleanup of old service
             shell: cmd
-            run: node_modules/.bin/pm2 delete \"books-${environment}\" || exit 0
+            run: node_modules\\.bin\\pm2 delete books-DEV || exit 0
           - name: Running service
             shell: cmd
-            run: node_modules/.bin/pm2 start -n \"books-DEV\" index.js -- 4000
-          - run: Deployment to DEV environment has finished
+            run: node_modules/.bin/pm2 start -n books-DEV index.js -- 4000
+          - run: echo "Deployment to DEV environment has finished"
     #         bat "npm install"
     # bat "node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0"
     # bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
