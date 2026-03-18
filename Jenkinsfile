@@ -5,6 +5,7 @@ pipeline {
 
     stages {
         stage('build-install-deps') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     build()
@@ -13,6 +14,7 @@ pipeline {
         }
 
         stage('deploy-dev') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     deploy("DEV", 4000)
@@ -20,6 +22,7 @@ pipeline {
             }
         }
         stage('test-dev') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     test("DEV")
@@ -28,6 +31,7 @@ pipeline {
         }
 
         stage('deploy-stg') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     deploy("STG", 4001)
@@ -35,6 +39,7 @@ pipeline {
             }
         }
         stage('test-stg') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     test("STG")
@@ -43,6 +48,7 @@ pipeline {
         }
 
         stage('deploy-prd') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     deploy("PRD", 4002)
@@ -50,6 +56,7 @@ pipeline {
             }
         }
         stage('test-prd') {
+            when {not {changeset "README.md"}}
             steps {
                 script {
                     test("PRD")

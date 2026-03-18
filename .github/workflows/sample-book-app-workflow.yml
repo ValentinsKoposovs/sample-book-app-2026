@@ -31,7 +31,7 @@ jobs:
           - uses: ./.github/actions/deploy
             with:
               environment: 'DEV'
-              port: 4003
+              port: 4000
     test-dev:
         runs-on: self-hosted
         needs: deploy-dev
@@ -48,7 +48,7 @@ jobs:
           - uses: ./.github/actions/deploy
             with:
               environment: 'STG'
-              port: 4004
+              port: 4001
     test-stg:
         runs-on: self-hosted
         needs: deploy-stg
@@ -65,7 +65,7 @@ jobs:
           - uses: ./.github/actions/deploy
             with:
               environment: 'PRD'
-              port: 4005
+              port: 4002
     test-prd:
         runs-on: self-hosted
         needs: deploy-prd
