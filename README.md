@@ -37,4 +37,3 @@ Remove pm2 service:
 ```
 pm2 delete <id of process>
 ```
-
