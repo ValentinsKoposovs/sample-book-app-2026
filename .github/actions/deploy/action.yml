@@ -10,7 +10,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v6
     - run: echo "Deployment to ${{inputs.environment}} environment has started.."
       shell: powershell
     - name: Install all dependencies

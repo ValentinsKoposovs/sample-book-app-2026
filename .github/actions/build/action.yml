@@ -1,0 +1,12 @@
+name: 'Build Application/service'
+description: 'Build Sample Book App service'
+runs:
+  using: composite
+  steps:
+    - run: echo "Installing all necessary node dependencies.."
+      shell: powershell
+    - name: Install all dependencies
+      run: npm install
+      shell: powershell
+    - run: echo "Dependencies successfully installed"
+      shell: powershell
