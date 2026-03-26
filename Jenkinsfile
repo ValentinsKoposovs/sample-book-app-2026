@@ -67,26 +67,30 @@ pipeline {
 }
 
 def build() {
-    echo "Installing all necessary node dependencies.."
-    bat "npm install"
-    echo "Done installing"
+    echo "Building sample-book-app.."
+    bat "docker build -t vkoposovs/sample-book-app:${BUILD_NUMBER} ."
+
+    echo "Pushing image to docker registry.."
+    bat "docker push vkoposovs/sample-book-app:${BUILD_NUMBER}"
+
+    echo "Done doing stuff"
 }
 
 def deploy(String environment, int port)
 {
-    echo "Deployment to ${environment} environment has started.."
-    git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/sample-book-app-2026.git'
-    bat "npm install"
-    bat "node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0"
-    bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
-    echo "Deployment to ${environment} environment has finished"
+    // echo "Deployment to ${environment} environment has started.."
+    // git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/sample-book-app-2026.git'
+    // bat "npm install"
+    // bat "node_modules\\.bin\\pm2 delete \"books-${environment}\" || exit 0"
+    // bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    // echo "Deployment to ${environment} environment has finished"
 }
 
 def test(String environment)
 {
-    echo "Testing Sample Book Application service has started on ${environment} environment.."
-    git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/RTU-sample-API-automation-2026.git'
-    bat "npm install"
-    bat "npm run books BOOKS_${environment}"
-    echo "Testing Sample Book Application service finished"
+    // echo "Testing Sample Book Application service has started on ${environment} environment.."
+    // git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/RTU-sample-API-automation-2026.git'
+    // bat "npm install"
+    // bat "npm run books BOOKS_${environment}"
+    // echo "Testing Sample Book Application service finished"
 }
